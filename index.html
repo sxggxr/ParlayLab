@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" id="tc" content="#050806">
+<title>ParlayLab</title>
+<link rel="stylesheet" href="styles.css">
+<script>try{var p=JSON.parse(localStorage.getItem("theme"))||"auto";document.documentElement.dataset.theme=p=="auto"?(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"):p}catch(e){}</script>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+<main class="phone">
+
+<!-- LOGIN -->
+<section id="auth" class="view">
+  <div class="top"><h1 class="logo">ParlayLab</h1><button class="round themeBtn" aria-label="Theme"></button></div>
+  <p class="sub" data-i="tagline"></p>
+  <div class="card">
+    <div class="seg" id="authSeg"><button id="tabIn" class="on" data-i="login"></button><button id="tabUp" data-i="register"></button></div>
+    <form id="authForm">
+      <input id="name" data-p="name" autocomplete="name" hidden>
+      <input id="email" type="email" data-p="email" autocomplete="email" required>
+      <input id="pass" type="password" minlength="6" data-p="pass" autocomplete="current-password" required>
+      <label class="chk"><input id="age" type="checkbox" required><span data-i="age"></span></label>
+      <p id="err" class="err"></p>
+      <button class="cta" data-i="enter"></button>
+    </form>
+    <div class="or"><span data-i="or"></span></div>
+    <div class="soc"><button data-s="google"><b class="gg">G</b>Google</button><button data-s="facebook"><b class="fb">f</b>Facebook</button></div>
+    <button id="guest" class="ghost" data-i="guest"></button>
+  </div>
+  <div class="langs"><button data-l="es">ES</button><button data-l="en">EN</button></div>
+  <p class="foot" data-i="resp"></p>
+  <p class="foot legal"><a href="privacidad.html" target="_blank" rel="noopener" data-i="privacy">Política de privacidad</a> • <a href="terminos.html" target="_blank" rel="noopener" data-i="terms">Términos y condiciones</a></p>
+</section>
+
+<!-- APP -->
+<section id="app" class="view" hidden>
+  <header>
+    <div><h1 class="logo sm">ParlayLab</h1><p class="sub" data-i="subtitle"></p></div>
+    <div class="hr"><button class="round themeBtn" aria-label="Theme"></button><button id="avatar" class="round" aria-label="Account"></button></div>
+  </header>
+
+  <!-- Calculadora -->
+  <div id="t-calc" class="tab">
+    <div class="card">
+      <h2><span data-i="details"></span><span class="pill" id="legCount"></span></h2>
+      <div class="seg" id="fmtSeg" style="--n:3"><button data-f="american" data-i="fA"></button><button data-f="decimal" data-i="fD"></button><button data-f="fractional" data-i="fF"></button></div>
+      <div id="legs"></div>
+      <button class="add" id="addBtn" data-i="addLeg"></button>
+    </div>
+    <div class="card">
+      <h2 data-i="stakeT"></h2>
+      <label class="lbl" for="stake" data-i="stake"></label>
+      <input id="stake" type="number" min="1" value="100" inputmode="decimal">
+      <div class="row"><span data-i="comb"></span><b id="comb"></b></div>
+      <div class="row"><span data-i="pay"></span><b class="big" id="pay"></b></div>
+      <div class="row"><span data-i="prof"></span><b id="prof"></b></div>
+      <button class="cta" id="calcBtn" data-i="calc"></button>
+      <p class="foot" data-i="note"></p>
+    </div>
+    <div class="card" id="bet">
+      <h2><span data-i="betNow"></span><span class="tag" data-i="sponsored"></span></h2>
+      <div id="quick"></div>
+    </div>
+  </div>
+
+  <!-- Apuestas -->
+  <div id="t-bets" class="tab" hidden>
+    <div class="card">
+      <h2><span data-i="booksT"></span><span class="tag" data-i="sponsored"></span></h2>
+      <p class="sub" data-i="booksS"></p>
+      <div id="books"></div>
+    </div>
+    <p class="foot" data-i="resp"></p>
+  </div>
+
+  <!-- Historial -->
+  <div id="t-hist" class="tab" hidden>
+    <div class="card">
+      <h2 data-i="histT"></h2>
+      <div id="histList"></div>
+      <button class="ghost" id="clearH" data-i="clear"></button>
+    </div>
+  </div>
+
+  <!-- Ajustes -->
+  <div id="t-set" class="tab" hidden>
+    <div class="card">
+      <h2 data-i="setT"></h2>
+      <label class="lbl" for="langSel" data-i="lang"></label>
+      <select id="langSel"><option value="es">Español</option><option value="en">English</option></select>
+      <label class="lbl" for="curSel" data-i="cur"></label>
+      <select id="curSel"><option value="MXN">MXN $</option><option value="USD">USD $</option></select>
+      <label class="lbl" data-i="theme"></label>
+      <div class="seg" id="themeSeg" style="--n:3"><button data-th="auto" data-i="auto"></button><button data-th="light" data-i="light"></button><button data-th="dark" data-i="dark"></button></div>
+      <label class="lbl" data-i="acct"></label>
+      <p id="acct" class="acct"></p>
+      <button class="ghost" id="logout" data-i="out"></button>
+    </div>
+    <div class="card pro">
+      <h2 data-i="proT"></h2>
+      <p class="sub" data-i="proD"></p>
+      <a class="cta gold" id="proLink" target="_blank" rel="noopener" data-i="proB"></a>
+    </div>
+    <p class="foot" data-i="resp"></p>
+    <p class="foot legal"><a href="Privacidad.html" target="_blank" rel="noopener" data-i="privacy">Política de privacidad</a> • <a href="Terminos.html" target="_blank" rel="noopener" data-i="terms">Términos y condiciones</a></p>
+  </div>
+
+  <nav>
+    <button data-t="calc" class="on"><span>🧮</span><i data-i="nCalc"></i></button>
+    <button data-t="bets"><span>🎟️</span><i data-i="nBets"></i></button>
+    <button data-t="hist"><span>🕘</span><i data-i="nHist"></i></button>
+    <button data-t="set"><span>⚙️</span><i data-i="nSet"></i></button>
+  </nav>
+</section>
+</main>
+
+<dialog id="dlg">
+  <form id="legForm" method="dialog">
+    <h2 data-i="addLeg"></h2>
+    <select id="sp"><option>NFL</option><option>NBA</option><option>NHL</option><option>MLB</option><option>Liga MX</option><option>MLS</option><option>Tenis</option></select>
+    <input id="pk" data-p="pick" maxlength="40" required>
+    <input id="od" required autocomplete="off" autocapitalize="off">
+    <div class="two"><button class="ghost" value="x" formnovalidate data-i="cancel"></button><button class="cta" data-i="save"></button></div>
+  </form>
+</dialog>
+<div id="toast" class="toast" hidden></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+</body>
+</html>
